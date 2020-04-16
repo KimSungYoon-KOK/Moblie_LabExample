@@ -6,14 +6,20 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.ArrayAdapter
 import android.widget.MultiAutoCompleteTextView
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     private val countries = mutableListOf(
         "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra",
-        "Angola", "Auguilla", "Antarctica"
+        "Angola", "Auguilla", "Antarctica", "Antigua and Barbuda", "Argentina",
+        "Armenia", "Aruba", "Australia", "Austraia", "Azerbaijan", "Bahrain",
+        "Bangladesh", "Barbados", "Belarus", "Belgium"
     )
+
+    lateinit var adapter: ArrayAdapter<String>
+    lateinit var countries2: Array<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,11 +28,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun init() {
+
+        //autoCompleteTextView
+//        adapter = ArrayAdapter<String>(
+//            this,
+//            android.R.layout.simple_dropdown_item_1line,
+//            countries
+//        )
+
+//        autoCompleteTextView.setOnItemClickListener{
+//            parent, view, position, id ->
+//            val item = parent.getItemAtPosition(position).toString()
+//            Toast.makeText(this, "선택된 항목 : $item", Toast.LENGTH_SHORT).show()
+//        }
+
+        //MultiAutoCompleteTextView
         countries2 = resources.getStringArray(R.array.countries_array)
         adapter = ArrayAdapter(
             this,
             android.R.layout.simple_dropdown_item_1line,
-            countries2
+            countries
         )
         autoCompleteTextView.setAdapter(adapter)
 
@@ -51,6 +72,8 @@ class MainActivity : AppCompatActivity() {
 
         inputBtn.setOnClickListener {
             adapter.add(editText.text.toString())
+            adapter.notifyDataSetChanged()
+            editText.text.clear()
         }
     }
 }
