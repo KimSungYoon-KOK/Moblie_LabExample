@@ -1,15 +1,15 @@
 package com.example.labexample
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.ArrayAdapter
 import android.widget.MultiAutoCompleteTextView
-import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_autocomplete.*
 
-class MainActivity : AppCompatActivity() {
+class AutoCompleteActivity : AppCompatActivity() {
 
     private val countries = mutableListOf(
         "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra",
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_autocomplete)
         init()
     }
 
@@ -74,6 +74,12 @@ class MainActivity : AppCompatActivity() {
             adapter.add(editText.text.toString())
             adapter.notifyDataSetChanged()
             editText.text.clear()
+        }
+
+        gotoLab2.setOnClickListener{
+            val intent = Intent(this, Lab2Activity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }
