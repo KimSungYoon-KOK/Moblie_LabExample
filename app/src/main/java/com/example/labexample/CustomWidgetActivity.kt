@@ -1,5 +1,6 @@
 package com.example.labexample
 
+import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -44,6 +45,18 @@ class CustomWidgetActivity : AppCompatActivity() {
             mediaPlayer?.stop()
             mediaPlayer?.release()      //음악 재생 메모리 해제
             mediaPlayer = null          //메모리 해제 후 null로 초기화
+        }
+
+        gotoLab2.setOnClickListener{
+            val intent = Intent(this, Lab2Activity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        gotoLab4.setOnClickListener{
+            val intent = Intent(this, Lab4Activity::class.java)
+            startActivity(intent)
+            finish()
         }
 
     }
