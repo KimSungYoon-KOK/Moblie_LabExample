@@ -41,8 +41,5 @@ class Lab4Activity : AppCompatActivity() {
                     imgView.visibility = View.INVISIBLE
             }
         }
-
-
-
     }
 }
