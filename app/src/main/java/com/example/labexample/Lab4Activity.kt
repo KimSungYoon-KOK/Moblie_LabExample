@@ -1,10 +1,12 @@
 package com.example.labexample
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.CheckBox
 import android.widget.ImageView
+import com.example.labexample.myrecyclerview.MyActivity
 import kotlinx.android.synthetic.main.activity_lab4.*
 
 class Lab4Activity : AppCompatActivity() {
@@ -41,5 +43,23 @@ class Lab4Activity : AppCompatActivity() {
                     imgView.visibility = View.INVISIBLE
             }
         }
+
+
+        gotoLab3.setOnClickListener{
+            val intent = Intent(this, CustomWidgetActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        gotoLab5.setOnClickListener{
+            val intent = Intent(this, MyActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
     }
+
+
+
+
 }
